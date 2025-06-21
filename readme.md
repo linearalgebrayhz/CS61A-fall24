@@ -31,15 +31,15 @@ This repo contains all the courseworks of CS61A at UC Berkeley.
 - [ ] hw 10: SQL
 - [ ] hw 11: Finale
 ### Projects
-- [ ] Hog
+- [x] Hog
 - [ ] Cats
 - [ ] Ants
 - [ ] Scheme
 
 ## Lectures & Discussions
 - [x] W1
-- [ ] W2
-- [ ] W3
+- [x] W2
+- [x] W3
 - [ ] W4
 - [ ] W5
 - [ ] W6
