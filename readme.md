@@ -9,7 +9,7 @@ This repo contains all the courseworks of CS61A at UC Berkeley.
 - [x] Lab 00: Getting Started 
 - [x] Lab 01: Functions
 - [x] Lab 02: Higher-Order Functions, Lambda Expressions
-- [ ] Lab 03: Recursion, Python Lists
+- [x] Lab 03: Recursion, Python Lists
 - [ ] Lab 04: Tree Recursion, Data Abstraction
 - [ ] Lab 05: Iterators, Mutability
 - [ ] Lab 06: Object-Oriented Programming

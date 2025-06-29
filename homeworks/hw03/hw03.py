@@ -25,6 +25,10 @@ def num_eights(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    if n // 10 == 0:
+        return 1 if n == 8 else 0
+    return num_eights(n // 10) + (1 if n % 10 == 8 else 0)
+    
 
 
 def digit_distance(n):
@@ -47,6 +51,11 @@ def digit_distance(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    if n // 10 == 0:
+        return 0
+    else:
+        all_but_last, second_to_last, last = n // 10, n // 10 % 10, n % 10
+        return digit_distance(all_but_last) + abs(second_to_last - last)
 
 
 def interleaved_sum(n, odd_func, even_func):
@@ -71,6 +80,14 @@ def interleaved_sum(n, odd_func, even_func):
     True
     """
     "*** YOUR CODE HERE ***"
+    def helper(i, fn):
+        if i == n:
+            return fn(i) if fn == odd_func else even_func(i)
+        if fn == odd_func:
+            return helper(i+1, even_func) + fn(i)
+        else:
+            return helper(i+1, odd_func) + fn(i)
+    return helper(1, odd_func)
 
 
 def next_smaller_dollar(bill):
@@ -107,7 +124,13 @@ def count_dollars(total):
     True
     """
     "*** YOUR CODE HERE ***"
-
+    def helper(total, bill):
+        if total == 0:
+            return 1
+        if total < 0 or bill is None:
+            return 0
+        return helper(total - bill, bill) + helper(total, next_smaller_dollar(bill))
+    return helper(total, 100)
 
 def next_larger_dollar(bill):
     """Returns the next larger bill in order."""
@@ -143,6 +166,7 @@ def count_dollars_upward(total):
     True
     """
     "*** YOUR CODE HERE ***"
+    # def helper(total, )
 
 
 def print_move(origin, destination):
@@ -178,6 +202,12 @@ def move_stack(n, start, end):
     """
     assert 1 <= start <= 3 and 1 <= end <= 3 and start != end, "Bad start/end"
     "*** YOUR CODE HERE ***"
+    if n == 1:
+        print_move(start,end)
+    else:
+        move_stack(n-1, start, 6 - start - end)
+        print_move(start,end)
+        move_stack(n-1, 6 - start - end, end)
 
 
 from operator import sub, mul
@@ -193,5 +223,5 @@ def make_anonymous_factorial():
     ...     ['Assign', 'AnnAssign', 'AugAssign', 'NamedExpr', 'FunctionDef', 'Recursion'])
     True
     """
-    return 'YOUR_EXPRESSION_HERE'
+    return (lambda f: (lambda x: f(lambda v: x(x)(v)))(lambda x: f(lambda v: x(x)(v))))(lambda fact: lambda n: 1 if n == 1 else mul(n, fact(n-1)))
 
