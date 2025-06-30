@@ -166,7 +166,13 @@ def count_dollars_upward(total):
     True
     """
     "*** YOUR CODE HERE ***"
-    # def helper(total, )
+    def helper(total, bill):
+        if total == 0:
+            return 1
+        elif total < 0 or total == None or bill == None:
+            return 0
+        return helper(total - bill, bill) + helper(total, next_larger_dollar(bill))
+    return helper(total, 1)
 
 
 def print_move(origin, destination):
