@@ -40,8 +40,8 @@ This repo contains all the courseworks of CS61A at UC Berkeley.
 - [x] W1
 - [x] W2
 - [x] W3
-- [ ] W4
-- [ ] W5
+- [x] W4
+- [x] W5
 - [ ] W6
 - [ ] W7
 - [ ] W8
