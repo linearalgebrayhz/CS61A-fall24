@@ -38,6 +38,10 @@ def pick(paragraphs, select, k):
     """
     # BEGIN PROBLEM 1
     "*** YOUR CODE HERE ***"
+    selected = [paragraph for paragraph in paragraphs if select(paragraph)]
+    if len(selected) < k + 1:
+        return ''
+    return selected[k]
     # END PROBLEM 1
 
 
@@ -58,6 +62,15 @@ def about(subject):
 
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
+    def check(paragraph):
+        
+        words = split(remove_punctuation(lower(paragraph)))
+        for i in subject:
+            if i in words:
+                return True
+        return False
+    
+    return check
     # END PROBLEM 2
 
 
@@ -88,6 +101,18 @@ def accuracy(typed, source):
     source_words = split(source)
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
+    src_total = len(source_words)
+    typed_total = len(typed_words)
+    if len(typed_words) == 0 and len(source_words) == 0:
+        return 100.0
+    elif len(typed_words) == 0 or len(source_words) == 0:
+        return 0.0
+
+    correct = 0
+    for i in range(min(src_total, typed_total)):
+        if typed_words[i] == source_words[i]:
+            correct += 1
+    return correct / typed_total * 100
     # END PROBLEM 3
 
 
@@ -106,6 +131,7 @@ def wpm(typed, elapsed):
     assert elapsed > 0, "Elapsed time must be positive"
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    return (len(typed) / 5) / (elapsed / 60) 
     # END PROBLEM 4
 
 
@@ -167,6 +193,10 @@ def autocorrect(typed_word, word_list, diff_function, limit):
     """
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+    if typed_word in word_list:
+        return typed_word
+    auto_correct_word = min(word_list, key=lambda x: diff_function(typed_word, x, limit))
+    return auto_correct_word if diff_function(typed_word, auto_correct_word, limit) <= limit else typed_word
     # END PROBLEM 5
 
 
@@ -193,7 +223,13 @@ def furry_fixes(typed, source, limit):
     5
     """
     # BEGIN PROBLEM 6
-    assert False, 'Remove this line'
+    if not typed:
+        return len(source)
+    if not source:
+        return len(typed)
+    if limit == 0:
+        return 0 if typed == source else 100 #?
+    return 1 + furry_fixes(typed=typed[1:], source=source[1:], limit=limit-1) if typed[0] != source[0] else furry_fixes(typed=typed[1:], source=source[1:], limit=limit) 
     # END PROBLEM 6
 
 
@@ -214,11 +250,13 @@ def minimum_mewtations(typed, source, limit):
     >>> minimum_mewtations("ckiteus", "kittens", big_limit) # ckiteus -> kiteus -> kitteus -> kittens
     3
     """
-    assert False, 'Remove this line'
+    # assert False, 'Remove this line'
     if ___________: # Base cases should go here, you may add more base cases as needed.
         # BEGIN
         "*** YOUR CODE HERE ***"
         # END
+    if limit == 0:
+        return 0 if typed == source else 100 #?
     # Recursive cases should go below here
     if ___________: # Feel free to remove or add additional cases
         # BEGIN
