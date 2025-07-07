@@ -12,7 +12,7 @@ This repo contains all the courseworks of CS61A at UC Berkeley.
 - [x] Lab 03: Recursion, Python Lists
 - [x] Lab 04: Tree Recursion, Data Abstraction
 - [x] Lab 05: Iterators, Mutability
-- [ ] Lab 06: Object-Oriented Programming
+- [x] Lab 06: Object-Oriented Programming
 - [ ] Lab 07: Linked Lists, Inheritance
 - [ ] Lab 08: Mutable Trees
 - [ ] Lab 09: Scheme
@@ -43,7 +43,7 @@ This repo contains all the courseworks of CS61A at UC Berkeley.
 - [x] W4
 - [x] W5
 - [x] W6
-- [ ] W7
+- [x] W7
 - [ ] W8
 - [ ] W9
 - [ ] W10
