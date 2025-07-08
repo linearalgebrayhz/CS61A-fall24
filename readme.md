@@ -22,8 +22,8 @@ This repo contains all the courseworks of CS61A at UC Berkeley.
 - [x] hw 01: Functions, Control
 - [x] hw 02: Higher-Order Functions
 - [x] hw 03: Recursion, Tree Recursion
-- [ ] hw 04: Sequences, Data Abstraction, Trees
-- [ ] hw 05: Generators
+- [x] hw 04: Sequences, Data Abstraction, Trees
+- [x] hw 05: Generators
 - [ ] hw 06: OOP, Linked Lists
 - [ ] hw 07: Scheme
 - [ ] hw 08: Scheme Lists

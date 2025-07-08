@@ -13,6 +13,12 @@ def shuffle(s):
     """
     assert len(s) % 2 == 0, 'len(seq) must be even'
     "*** YOUR CODE HERE ***"
+    half_length = len(s) // 2
+    interleave = []
+    for i in range(half_length):
+        interleave.append(s[i])
+        interleave.append(s[i+half_length])
+    return interleave
 
 
 def deep_map(f, s):
@@ -38,6 +44,11 @@ def deep_map(f, s):
     True
     """
     "*** YOUR CODE HERE ***"
+    for i in range(len(s)):
+        if type(s[i]) == list:
+            deep_map(f, s[i])
+        else:
+            s[i] = f(s[i])
 
 
 HW_SOURCE_FILE=__file__
@@ -47,11 +58,13 @@ def planet(mass):
     """Construct a planet of some mass."""
     assert mass > 0
     "*** YOUR CODE HERE ***"
+    return ["planet", mass]
 
 def mass(p):
     """Select the mass of a planet."""
     assert is_planet(p), 'must call mass on a planet'
     "*** YOUR CODE HERE ***"
+    return p[1]
 
 def is_planet(p):
     """Whether p is a planet."""
@@ -104,6 +117,11 @@ def balanced(m):
     True
     """
     "*** YOUR CODE HERE ***"
+    if is_planet(m):
+        return True
+    left_arm = left(m)
+    right_arm = right(m)
+    return total_mass(end(left_arm)) * length(left_arm) == total_mass(end(right_arm)) * length(right_arm) and balanced(end(right_arm)) and balanced(end(left_arm))
 
 
 def berry_finder(t):
@@ -124,6 +142,12 @@ def berry_finder(t):
     True
     """
     "*** YOUR CODE HERE ***"
+    if label(t) == "berry":
+        return True
+    for bc in branches(t):
+        if berry_finder(bc):
+            return True
+    return False
 
 
 HW_SOURCE_FILE=__file__
@@ -139,7 +163,9 @@ def max_path_sum(t):
     17
     """
     "*** YOUR CODE HERE ***"
-
+    if is_leaf(t):
+        return label(t)
+    return max([label(t) + max_path_sum(bc) for bc in branches(t)])
 
 def mobile(left, right):
     """Construct a mobile from a left arm and a right arm."""
