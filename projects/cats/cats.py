@@ -162,6 +162,12 @@ def memo_diff(diff_function):
     def memoized(typed, source, limit):
         # BEGIN PROBLEM EC
         "*** YOUR CODE HERE ***"
+        pair = (typed, source)
+        if pair not in cache or cache[pair]["limit"] < limit:
+            result = diff_function(typed, source, limit)
+            cache[pair] = {"limit":limit, "result":result}
+            return result
+        return cache[pair]["result"]
         # END PROBLEM EC
 
     return memoized
@@ -232,7 +238,7 @@ def furry_fixes(typed, source, limit):
     return 1 + furry_fixes(typed=typed[1:], source=source[1:], limit=limit-1) if typed[0] != source[0] else furry_fixes(typed=typed[1:], source=source[1:], limit=limit) 
     # END PROBLEM 6
 
-
+@trace
 def minimum_mewtations(typed, source, limit):
     """A diff function for autocorrect that computes the edit distance from TYPED to SOURCE.
     This function takes in a string TYPED, a string SOURCE, and a number LIMIT.
@@ -251,23 +257,43 @@ def minimum_mewtations(typed, source, limit):
     3
     """
     # assert False, 'Remove this line'
-    if ___________: # Base cases should go here, you may add more base cases as needed.
+    if typed == source:
+        return 0
+    if abs(len(typed) - len(source)) > limit:
+            return limit + 1
+    while typed and source and typed[0] == source[0]:
+        typed = typed[1:]
+        source = source[1:]
+    if not typed or not source: # Base cases should go here, you may add more base cases as needed.
         # BEGIN
         "*** YOUR CODE HERE ***"
+        return len(typed) if not source else len(source)
         # END
     if limit == 0:
-        return 0 if typed == source else 100 #?
+        return 0 if typed == source else limit+1 #?
     # Recursive cases should go below here
-    if ___________: # Feel free to remove or add additional cases
+    if typed[0] == source[0]: # Feel free to remove or add additional cases
         # BEGIN
         "*** YOUR CODE HERE ***"
+        return minimum_mewtations(typed[1:], source[1:], limit)
         # END
     else:
-        add = ... # Fill in these lines
-        remove = ...
-        substitute = ...
+        typed_rest = typed[1:]
+        source_rest = source[1:]
+        
+        add = remove = substitute = limit + 1
+        if typed == source_rest or source == typed_rest or typed_rest == source_rest:
+            return 1
+        else:
+            if not (abs(len(typed) - len(source_rest)) > limit-1):
+                add = 1 + minimum_mewtations(typed, source_rest, limit-1) if source_rest else 1 + len(typed)# Fill in these lines
+            if not (abs(len(typed_rest) - len(source)) > limit-1):
+                remove = 1 + minimum_mewtations(typed_rest, source, limit-1) if typed_rest else 1 + len(source)
+            if not (abs(len(typed_rest) - len(source_rest)) > limit-1):
+                substitute = 1 + minimum_mewtations(typed_rest,source_rest, limit-1) if typed_rest and source_rest else 1 + (len(typed_rest) if not source_rest else len(source_rest))
         # BEGIN
         "*** YOUR CODE HERE ***"
+        return min(add, remove, substitute)
         # END
 
 
@@ -314,6 +340,15 @@ def report_progress(typed, source, user_id, upload):
     """
     # BEGIN PROBLEM 8
     "*** YOUR CODE HERE ***"
+    total = len(source)
+    correct = 0
+    for i in range(len(typed)):
+        if typed[i] != source[i]:
+            break
+        correct += 1
+    acc = correct / total
+    upload({"id": user_id, 'progress': acc})
+    return acc
     # END PROBLEM 8
 
 
@@ -338,6 +373,9 @@ def time_per_word(words, timestamps_per_player):
     tpp = timestamps_per_player  # A shorter name (for convenience)
     # BEGIN PROBLEM 9
     times = []  # You may remove this line
+    length = len(words)
+    for l in timestamps_per_player:
+        times.append([l[1:][i] - l[:-1][i] for i in range(length)])
     # END PROBLEM 9
     return {'words': words, 'times': times}
 
@@ -365,6 +403,17 @@ def fastest_words(words_and_times):
     word_indices = range(len(words))    # contains an *index* for each word
     # BEGIN PROBLEM 10
     "*** YOUR CODE HERE ***"
+    fastest_list = []
+    appended = [False] * len(words)
+    for i in player_indices:
+        player_word_list = []
+        for j in word_indices:
+            if not appended[j] and get_time(times, i, j) == min([get_time(times, k, j) for k in player_indices]):
+                player_word_list.append(words[j])
+                appended[j] = True
+        fastest_list.append(player_word_list)
+    return fastest_list
+
     # END PROBLEM 10
 
 
