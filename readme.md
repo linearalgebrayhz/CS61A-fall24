@@ -13,8 +13,8 @@ This repo contains all the courseworks of CS61A at UC Berkeley.
 - [x] Lab 04: Tree Recursion, Data Abstraction
 - [x] Lab 05: Iterators, Mutability
 - [x] Lab 06: Object-Oriented Programming
-- [ ] Lab 07: Linked Lists, Inheritance
-- [ ] Lab 08: Mutable Trees
+- [x] Lab 07: Linked Lists, Inheritance
+- [x] Lab 08: Mutable Trees
 - [ ] Lab 09: Scheme
 - [ ] Lab 10: Interpreters
 - [ ] Lab 11: Programs as Data, Macros
@@ -32,7 +32,7 @@ This repo contains all the courseworks of CS61A at UC Berkeley.
 - [ ] hw 11: Finale
 ### Projects
 - [x] Hog
-- [ ] Cats
+- [x] Cats
 - [ ] Ants
 - [ ] Scheme
 
@@ -44,9 +44,9 @@ This repo contains all the courseworks of CS61A at UC Berkeley.
 - [x] W5
 - [x] W6
 - [x] W7
-- [ ] W8
-- [ ] W9
-- [ ] W10
+- [x] W8
+- [x] W9
+- [x] W10
 - [ ] W11
 - [ ] W12
 - [ ] W13

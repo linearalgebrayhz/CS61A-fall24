@@ -40,6 +40,12 @@ class Account:
         """Return the number of years until balance would grow to amount."""
         assert self.balance > 0 and amount > 0 and self.interest > 0
         "*** YOUR CODE HERE ***"
+        temp = self.balance
+        year_count = 0
+        while temp < amount:
+            temp *= (1 + self.interest)
+            year_count += 1
+        return year_count
 
 
 class FreeChecking(Account):
@@ -70,6 +76,18 @@ class FreeChecking(Account):
     free_withdrawals = 2
 
     "*** YOUR CODE HERE ***"
+    def withdraw(self, amount):
+        if self.free_withdrawals > 0:
+            with_draw_fee = 0
+            self.free_withdrawals -= 1
+        else:
+            with_draw_fee = self.withdraw_fee   
+        if amount + with_draw_fee > self.balance:
+            return "Insufficient funds"
+        if amount + with_draw_fee > self.max_withdrawal:
+            return "Can't withdraw that amount"
+        self.balance = self.balance - (amount + with_draw_fee)
+        return self.balance
 
 
 def without(s, i):
@@ -86,6 +104,24 @@ def without(s, i):
     True
     """
     "*** YOUR CODE HERE ***"
+    current = s
+    new_head = Link.empty
+    tail = None
+    index = 0
+    while current is not Link.empty:
+        if index != i:
+            new_node = Link(current.first)
+            if new_head is Link.empty:
+                new_head = new_node
+                tail = new_head
+            else:
+                tail.rest = new_node
+                tail = tail.rest
+        index += 1
+        current = current.rest
+    return new_head
+
+
 
 
 def duplicate_link(s, val):
@@ -105,6 +141,14 @@ def duplicate_link(s, val):
     Link(1, Link(2, Link(2, Link(2, Link(2, Link(3))))))
     """
     "*** YOUR CODE HERE ***"
+    current = s
+    while current is not Link.empty:
+        if current.first == val:
+            new_node = Link(val, current.rest)
+            current.rest = new_node
+            current = current.rest.rest
+        else:
+            current = current.rest
 
 
 class Link:

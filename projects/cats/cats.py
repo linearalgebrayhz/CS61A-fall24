@@ -177,7 +177,7 @@ def memo_diff(diff_function):
 # Phase 2 #
 ###########
 
-
+@memo
 def autocorrect(typed_word, word_list, diff_function, limit):
     """Returns the element of WORD_LIST that has the smallest difference
     from TYPED_WORD based on DIFF_FUNCTION. If multiple words are tied for the smallest difference,
@@ -238,7 +238,7 @@ def furry_fixes(typed, source, limit):
     return 1 + furry_fixes(typed=typed[1:], source=source[1:], limit=limit-1) if typed[0] != source[0] else furry_fixes(typed=typed[1:], source=source[1:], limit=limit) 
     # END PROBLEM 6
 
-@trace
+@memo_diff
 def minimum_mewtations(typed, source, limit):
     """A diff function for autocorrect that computes the edit distance from TYPED to SOURCE.
     This function takes in a string TYPED, a string SOURCE, and a number LIMIT.
@@ -276,7 +276,6 @@ def minimum_mewtations(typed, source, limit):
         # BEGIN
         "*** YOUR CODE HERE ***"
         return minimum_mewtations(typed[1:], source[1:], limit)
-        # END
     else:
         typed_rest = typed[1:]
         source_rest = source[1:]
@@ -294,7 +293,6 @@ def minimum_mewtations(typed, source, limit):
         # BEGIN
         "*** YOUR CODE HERE ***"
         return min(add, remove, substitute)
-        # END
 
 
 # Ignore the line below
