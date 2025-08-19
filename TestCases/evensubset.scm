@@ -1,0 +1,61 @@
+(define (even-subsets s)
+    (if (null? s) 
+        nil
+        (append (even-subsets (cdr s))
+            (map (lambda (t) (cons (car s) t))
+                (if (even? (car s))
+                    (even-subsets (cdr s))
+                    (odd-subsets (cdr s))
+                )
+            )
+            (if (even? (car s)) (list (list (car s))) nil)
+        )
+    )
+)
+
+(define (odd-subsets s)
+    (if (null? s) 
+        nil
+        (append (odd-subsets (cdr s))
+            (map (lambda (t) (cons (car s) t))
+                (if (odd? (car s))
+                    (even-subsets (cdr s))
+                    (odd-subsets (cdr s))
+                )
+            )
+            (if (odd? (car s)) (list (list (car s))) nil)
+        )
+    )
+)
+
+; consider using a higher order helper function
+
+(define (subsets-helper f s)
+    (append 
+            (map (lambda (t) (cons (car s) t))
+                (if (f (car s))
+                    (even-subsets (cdr s))
+                    (odd-subsets (cdr s))
+                )
+            )
+            (if (f (car s)) (list (list (car s))) nil)
+    )
+)
+
+(define (even-subsets-1 s)
+    (if (null? s) 
+        nil
+        (append (even-subsets (cdr s))
+            (subsets-helper even? s)
+        )
+    )
+)
+
+(define (odd-subsets-1 s)
+    (if (null? s) 
+        nil
+        (append (odd-subsets (cdr s))
+            (subsets-helper even? s)
+        )
+    )
+)

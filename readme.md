@@ -15,7 +15,7 @@ This repo contains all the courseworks of CS61A at UC Berkeley.
 - [x] Lab 06: Object-Oriented Programming
 - [x] Lab 07: Linked Lists, Inheritance
 - [x] Lab 08: Mutable Trees
-- [ ] Lab 09: Scheme
+- [x] Lab 09: Scheme
 - [ ] Lab 10: Interpreters
 - [ ] Lab 11: Programs as Data, Macros
 ### Homeworks
@@ -25,8 +25,8 @@ This repo contains all the courseworks of CS61A at UC Berkeley.
 - [x] hw 04: Sequences, Data Abstraction, Trees
 - [x] hw 05: Generators
 - [x] hw 06: OOP, Linked Lists
-- [ ] hw 07: Scheme
-- [ ] hw 08: Scheme Lists
+- [x] hw 07: Scheme
+- [x] hw 08: Scheme Lists
 - [ ] hw 09: Programs as Data, Macros
 - [ ] hw 10: SQL
 - [ ] hw 11: Finale
@@ -47,7 +47,7 @@ This repo contains all the courseworks of CS61A at UC Berkeley.
 - [x] W8
 - [x] W9
 - [x] W10
-- [ ] W11
+- [x] W11
 - [ ] W12
 - [ ] W13
 - [ ] W14
