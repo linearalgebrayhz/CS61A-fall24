@@ -16,7 +16,7 @@ This repo contains all the courseworks of CS61A at UC Berkeley.
 - [x] Lab 07: Linked Lists, Inheritance
 - [x] Lab 08: Mutable Trees
 - [x] Lab 09: Scheme
-- [ ] Lab 10: Interpreters
+- [x] Lab 10: Interpreters
 - [ ] Lab 11: Programs as Data, Macros
 ### Homeworks
 - [x] hw 01: Functions, Control
@@ -48,7 +48,7 @@ This repo contains all the courseworks of CS61A at UC Berkeley.
 - [x] W9
 - [x] W10
 - [x] W11
-- [ ] W12
+- [x] W12
 - [ ] W13
 - [ ] W14
 - [ ] W15

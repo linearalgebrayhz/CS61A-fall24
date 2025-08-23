@@ -34,3 +34,22 @@ binds symboals to values temporarily; just for one expression
                 (sqrt (+ (* a a) (* b b)))
                 ))
 ```
+
+
+From week of interpreters
+
+Procedure definition is short hand of define with a lambda expression
+
+```scm
+(define (<name> <formal parameters>) <body>)
+; is equivalent to
+(define <name> (lambda (<formal parameters>) <body>))
+```
+
+## Dynamic Scope
+
+The way in which names are looked up in Scheme and Python is called lexical scope (or static scope)
+
+Lexical Scope: The parent of a frame is the environment in which a procedure was **defined**.
+
+Dynamic scope: The parent of a frame is the environment in which a procedure was **called**.
