@@ -58,6 +58,12 @@ class Frame:
             raise SchemeError('Incorrect number of arguments to function call')
         # BEGIN PROBLEM 8
         "*** YOUR CODE HERE ***"
+        childFrame = Frame(self)
+        while formals is not nil:
+            childFrame.define(formals.first,vals.first)
+            formals = formals.rest
+            vals = vals.rest
+        return childFrame
         # END PROBLEM 8
 
 ##############
