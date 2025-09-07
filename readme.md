@@ -18,6 +18,7 @@ This repo contains all the courseworks of CS61A at UC Berkeley.
 - [x] Lab 09: Scheme
 - [x] Lab 10: Interpreters
 - [ ] Lab 11: Programs as Data, Macros
+- [ ] Lab 12: SQL
 ### Homeworks
 - [x] hw 01: Functions, Control
 - [x] hw 02: Higher-Order Functions
@@ -27,9 +28,9 @@ This repo contains all the courseworks of CS61A at UC Berkeley.
 - [x] hw 06: OOP, Linked Lists
 - [x] hw 07: Scheme
 - [x] hw 08: Scheme Lists
-- [ ] hw 09: Programs as Data, Macros
+- [x] hw 09: Programs as Data, Macros
 - [ ] hw 10: SQL
-- [ ] hw 11: Finale
+- [x] hw 11: Finale
 ### Projects
 - [x] Hog
 - [x] Cats
