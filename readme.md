@@ -17,7 +17,7 @@ This repo contains all the courseworks of CS61A at UC Berkeley.
 - [x] Lab 08: Mutable Trees
 - [x] Lab 09: Scheme
 - [x] Lab 10: Interpreters
-- [ ] Lab 11: Programs as Data, Macros
+- [x] Lab 11: Programs as Data, Macros
 - [ ] Lab 12: SQL
 ### Homeworks
 - [x] hw 01: Functions, Control
@@ -50,6 +50,6 @@ This repo contains all the courseworks of CS61A at UC Berkeley.
 - [x] W10
 - [x] W11
 - [x] W12
-- [ ] W13
+- [x] W13
 - [ ] W14
 - [ ] W15
